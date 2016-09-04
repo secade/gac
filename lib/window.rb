@@ -1,5 +1,6 @@
 require 'gosu'
 require 'active_support/all'
+require 'pry'
 require_relative 'constants'
 require_relative 'player'
 require_relative 'draw'
