@@ -1,10 +1,11 @@
 module Utils
   module ConstantHelpers
-    def self.include?(sym)
+    def includes?(sym)
       self.constants.include?(sym.upcase)
     end
 
-    def self.get(str)
+    def get(sym)
+      "#{self}::#{sym.upcase}".constantize
     end
   end
 end

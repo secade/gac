@@ -16,10 +16,10 @@ module Draw
     private
 
     def set_color(color)
-      unless ::UNIVERSAL::COLORS.include?(color)
+      unless COLORS.include?(color)
         raise DrawError, "Declared Color '#{color}' for #{self.class} not found!"
       else
-        @color = ::UNIVERSAL::COLORS.get(color)
+        @color = COLORS.get(color)
       end
     end
   end
