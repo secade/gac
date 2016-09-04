@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+irb -I . -r 'lib/window.rb'
