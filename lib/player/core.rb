@@ -14,6 +14,7 @@ module Player
       @window = window
       @x, @y = start_x, start_y
       @vel_x, @vel_y = 0, 0
+      # puts "#{x}: #{vel_x}, #{y}: #{vel_y}"
       @drawable = ::Draw::Rectangle.new(window, :green, WIDTH, HEIGHT)
     end
 
