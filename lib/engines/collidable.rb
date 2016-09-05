@@ -17,7 +17,7 @@ module Engines
         hx = h * dx
         if wy > hx
           if wy > -hx
-            Collision.new(:top, dy.abs)
+            Collision.new(:top, collidable.y - self.y + collidable.h)
           else
             Collision.new(:left, (self.x - collidable.x + self.w))
           end
@@ -25,7 +25,7 @@ module Engines
           if wy > -hx
             Collision.new(:right, (collidable.x - self.x + collidable.w))
           else
-            Collision.new(:bottom, dy.abs)
+            Collision.new(:bottom, self.y - collidable.y + self.h)
           end
         end
       end

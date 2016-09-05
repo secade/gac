@@ -16,6 +16,16 @@ module Player
       @vel_y *= DRAG
     end
 
+    def input_move_up
+      @drawable = @up_rec
+      vel_y >= -MAX_VEL ? @vel_y -= IMPULSE : @vel_y = -MAX_VEL
+    end
+
+    def input_move_down
+      @drawable = @down_rec
+      vel_y <= MAX_VEL ? @vel_y += IMPULSE : @vel_y = MAX_VEL
+    end
+
     def input_move_right
       @drawable = @right_rec
       vel_x <= MAX_VEL ? @vel_x += IMPULSE : @vel_x = MAX_VEL

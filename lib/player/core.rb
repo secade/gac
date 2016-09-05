@@ -9,6 +9,7 @@ module Player
   class Core
     include Movement
     include Engines::Collidable
+    include Engines::Gravity
     extend Utils::AutoTimer
 
     attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h
@@ -20,6 +21,8 @@ module Player
       @vel_x, @vel_y = 0, 0
       @left_rec = ::Draw::Rectangle.new(window, :red, WIDTH, HEIGHT)
       @right_rec = ::Draw::Rectangle.new(window, :green, WIDTH, HEIGHT)
+      @up_rec = ::Draw::Rectangle.new(window, :orange, WIDTH, HEIGHT)
+      @down_rec = ::Draw::Rectangle.new(window, :purple, WIDTH, HEIGHT)
       @drawable = @right_rec
     end
 

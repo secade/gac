@@ -8,34 +8,41 @@ module Environment
 
     ENGINE = Engines::Field
 
-    attr_accessor :window, :player, :walls
+    attr_accessor :window, :player, :platforms
 
     def initialize(window, player)
       @window = window
       @player = player
-      @walls = []
-      make_walls!
+      @platforms = []
+      make_platforms!
     end
 
     def update
-      ENGINE.update(player, walls)
+      ENGINE.update(player, platforms)
     end
 
     def draw
-      @walls.each(&:draw)
+      @platforms.each(&:draw)
     end
 
     private
 
-    def make_walls!
-      walls << Wall.new(window,
+    def make_platforms!
+      platforms << Platform.new(window,
                         0, 0,
-                        16, ::UNIVERSAL::HEIGHT,
-                        :collide)
-      walls << Wall.new(window,
+                        16, ::UNIVERSAL::HEIGHT)
+      platforms << Platform.new(window,
                         ::UNIVERSAL::WIDTH - 16, 0,
-                        16, ::UNIVERSAL::HEIGHT,
-                        :collide)
+                        16, ::UNIVERSAL::HEIGHT)
+      platforms << Platform.new(window,
+                        0, 0,
+                        UNIVERSAL::WIDTH, 16, :gold)
+      platforms << Platform.new(window,
+                        0, UNIVERSAL::HEIGHT - 16,
+                        UNIVERSAL::WIDTH, 16, :gold)
+      platforms << Platform.new(window,
+                        160, 140,
+                        32, 32, :blue)
     end
   end
 end
