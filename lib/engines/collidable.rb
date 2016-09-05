@@ -1,0 +1,44 @@
+# Collidable must have the following:
+# @x, @y accessors for x-coord/y-coord respectively
+# @w, @h accessors for width/height respectively
+# Collidable#collide! instance method
+
+module Engines
+  module Collidable
+    # @return Nil, Engines::Collision
+    def check_collision(collidable)
+      w = 0.5 * (self.w + collidable.w)
+      h = 0.5 * (self.h + collidable.h)
+      dx = self.center_x - collidable.center_x
+      dy = self.center_y - collidable.center_y
+
+      if dx.abs <= w && dy.abs <= h
+        wy = w * dy
+        hx = h * dx
+        if wy > hx
+          if wy > -hx
+            Collision.new(:top, dy.abs)
+          else
+            # Collision.new(:left, (self.x - collidable.x + collidable.w))
+            Collision.new(:left, (collidable.x - self.x + self.w))
+          end
+        else
+          if wy > -hx
+            Collision.new(:right, (self.x - collidable.x + collidable.w))
+            # Collision.new(:right, (collidable.x - self.x + self.w))
+          else
+            Collision.new(:bottom, dy.abs)
+          end
+        end
+      end
+    end
+
+    def center_x
+      x + (0.5 * w)
+    end
+
+    def center_y
+      y + (0.5 * h)
+    end
+  end
+end
