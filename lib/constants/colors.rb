@@ -1,4 +1,4 @@
-require 'lib/utils'
+require_relative '../utils'
 
 module COLORS
   extend Utils::ConstantHelpers

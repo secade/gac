@@ -13,8 +13,10 @@ class Window < Gosu::Window
   end
 
   def update
+    @player.update
   end
 
   def draw
+    @player.draw
   end
 end

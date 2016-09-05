@@ -3,20 +3,22 @@ require 'active_support'
 # Handles instantiation of base drawable objects
 
 module Draw
-  extend ActiveSupport::Concern
-  extend ActiveSupport::Inflector
+  # extend ActiveSupport::Concern
+  # extend ActiveSupport::Inflector
 
   class Base
     class DrawError < StandardError; end
 
+    attr_reader :color
+
     def initialize(color)
-      set_color(color)
+      raise DrawError, "#{self.class} initialize not declared!"
     end
 
     private
 
     def set_color(color)
-      unless COLORS.include?(color)
+      unless COLORS.includes?(color)
         raise DrawError, "Declared Color '#{color}' for #{self.class} not found!"
       else
         @color = COLORS.get(color)
