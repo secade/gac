@@ -9,6 +9,7 @@ module Player
   class Core
     include Movement
     include Engines::Collidable
+    extend Utils::AutoTimer
 
     attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h
 
@@ -17,13 +18,13 @@ module Player
       @x, @y = start_x, start_y
       @w, @h = WIDTH, HEIGHT
       @vel_x, @vel_y = 0, 0
-      # puts "#{x}: #{vel_x}, #{y}: #{vel_y}"
       @left_rec = ::Draw::Rectangle.new(window, :red, WIDTH, HEIGHT)
       @right_rec = ::Draw::Rectangle.new(window, :green, WIDTH, HEIGHT)
       @drawable = @right_rec
     end
 
     def update
+      # update_timers
       calc_move
     end
 
