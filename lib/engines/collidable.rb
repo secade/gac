@@ -19,13 +19,11 @@ module Engines
           if wy > -hx
             Collision.new(:top, dy.abs)
           else
-            # Collision.new(:left, (self.x - collidable.x + collidable.w))
-            Collision.new(:left, (collidable.x - self.x + self.w))
+            Collision.new(:left, (self.x - collidable.x + self.w))
           end
         else
           if wy > -hx
-            Collision.new(:right, (self.x - collidable.x + collidable.w))
-            # Collision.new(:right, (collidable.x - self.x + self.w))
+            Collision.new(:right, (collidable.x - self.x + collidable.w))
           else
             Collision.new(:bottom, dy.abs)
           end

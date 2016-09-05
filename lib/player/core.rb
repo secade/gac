@@ -24,14 +24,7 @@ module Player
     end
 
     def update
-      @x += vel_x
-      @y += vel_y
-      # @x, @y = PositionCalculator.update(
-      #   x: x,
-      #   y: y,
-      #   vel_x: vel_x,
-      #   vel_y: vel_y,
-      # )
+      calc_move
     end
 
     def draw
@@ -43,9 +36,6 @@ module Player
     end
 
     def collide!(collision)
-      # puts '*'*50
-      # puts "COLLIDE WITH something MOTHERFUCKER"
-      # puts '*'*50
       send collision.action, collision
     end
   end

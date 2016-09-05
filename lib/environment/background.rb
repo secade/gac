@@ -29,7 +29,7 @@ module Environment
 
     def make_walls!
       walls << Wall.new(window,
-                        64, 0,
+                        0, 0,
                         16, ::UNIVERSAL::HEIGHT,
                         :collide)
       walls << Wall.new(window,

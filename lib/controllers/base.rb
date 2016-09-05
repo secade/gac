@@ -3,8 +3,8 @@
 module Controllers
   class Base
     MOVE_MAPPING = {
-      move_left:  { key: 'KbLeft',  receiver: :player },
-      move_right: { key: 'KbRight', receiver: :player },
+      input_move_left:  { key: 'KbLeft',  receiver: :player },
+      input_move_right: { key: 'KbRight', receiver: :player },
     }.freeze
 
     WINDOW_MAPPING = {
