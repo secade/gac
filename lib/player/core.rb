@@ -10,7 +10,9 @@ module Player
     include Movement
     include Engines::Collidable
     include Engines::Gravity
-    extend Utils::AutoTimer
+    extend Utils::ActionHelpers
+
+    action_flag :jump
 
     attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h
 

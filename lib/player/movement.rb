@@ -10,20 +10,24 @@ module Player
     DRAG = 0.85
 
     def update_movement
+      @prev_x, @prev_y = x, y
       @x += vel_x
       @y += vel_y
+      kill_jump_flag if ver_still?
       @vel_x *= DRAG
       @vel_y *= DRAG
     end
 
-    def input_move_up
+    def _jump
       @drawable = @up_rec
-      vel_y >= -MAX_VEL ? @vel_y -= IMPULSE : @vel_y = -MAX_VEL
+      @vel_y = -MAX_VEL * 6.0
+    end
+
+    def ver_still?
+      vel_y == 0 && @prev_y == @y
     end
 
     def input_move_down
-      @drawable = @down_rec
-      vel_y <= MAX_VEL ? @vel_y += IMPULSE : @vel_y = MAX_VEL
     end
 
     def input_move_right

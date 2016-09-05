@@ -18,5 +18,9 @@ module Environment
     def collided_action
       :full_stop
     end
+
+    def gravity?
+      false
+    end
   end
 end
