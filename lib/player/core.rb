@@ -24,8 +24,7 @@ module Player
     end
 
     def update
-      # update_timers
-      calc_move
+      update_movement
     end
 
     def draw

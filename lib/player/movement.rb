@@ -6,12 +6,14 @@ module Player
     HOR_OFFSET = 2.0
     IMPULSE = 2.5
     MAX_VEL = 5.0
-    MIN_VEL = 0.10
+    MIN_VEL = 1.50
     DRAG = 0.85
 
-    def calc_move
+    def update_movement
       @x += vel_x
       @y += vel_y
+      @vel_x *= DRAG
+      @vel_y *= DRAG
     end
 
     def input_move_right

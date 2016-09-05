@@ -20,15 +20,15 @@ module Utils
           _timers.any? {|t| t.type == :#{method} }
         end
       RUBY
+    end
 
-      def _timers
-        @_timers ||= []
-      end
+    def _timers
+      @_timers ||= []
+    end
 
-      def update_timers
-        _timers.each(&:update)
-        _timers.keep_if(&:time_left?)
-      end
+    def update_timers
+      _timers.each(&:update)
+      _timers.keep_if(&:time_left?)
     end
   end
 
