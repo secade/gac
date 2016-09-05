@@ -3,9 +3,6 @@ require 'active_support'
 # Handles instantiation of base drawable objects
 
 module Draw
-  # extend ActiveSupport::Concern
-  # extend ActiveSupport::Inflector
-
   class Base
     class DrawError < StandardError; end
 
