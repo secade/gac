@@ -3,14 +3,17 @@ require_relative 'position_calculator'
 require_relative '../engines/collidable'
 
 module Player
-  WIDTH = ::UNIVERSAL::TILE_W
-  HEIGHT = ::UNIVERSAL::TILE_H * 2
+  WIDTH = 32
+  HEIGHT = 62
 
   class Core
+    extend Environment::BaseEntity
     include Movement
     include Engines::Collidable
     include Engines::Gravity
     extend Utils::ActionHelpers
+
+    attr_entity [:updateable, :drawable, :gravitizable]
 
     action_flag :jump
 

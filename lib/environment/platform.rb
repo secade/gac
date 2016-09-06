@@ -1,13 +1,15 @@
 module Environment
   class Platform
+    extend BaseEntity
     include Engines::Collidable
+
+    attr_entity [:drawable, :collidable]
 
     attr_accessor :window, :x, :y, :h, :w
 
-    def initialize(window, x: , y: , w: , height: , color: :blue)
+    def initialize(window, x: , y: , w: , h: , color: :blue)
       @window = window
-      @x, @y = x, y
-      @h, @w = height, width
+      @x, @y, @w, @h = x, y, w, h
       @drawable = ::Draw::Rectangle.new(window, color, w, h)
     end
 
@@ -17,10 +19,6 @@ module Environment
 
     def collided_action
       :full_stop
-    end
-
-    def gravity?
-      false
     end
   end
 end

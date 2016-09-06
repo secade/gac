@@ -5,10 +5,6 @@
 
 module Engines
   module Collidable
-    def collidable?
-      true
-    end
-
     # @return Nil, Engines::Collision
     def check_collision(collidable)
       w = 0.5 * (self.w + collidable.w)

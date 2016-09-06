@@ -5,14 +5,10 @@ require_relative '../../utils'
 
 module Environment
   class MapEater
-    extend Utils::ConstantHelpers
-
-    MAX_W = ::UNIVERSAL::WIDTH_TILES
-    MAX_H = ::UNIVERSAL::HEIGHT_TILES
 
     # return: Map
     def self.eat!(args)
-      new(args).tap(&:eat!)
+      new(args).eat!
     end
 
     attr_accessor :window, :file
@@ -23,19 +19,36 @@ module Environment
     end
 
     def eat!
-      Map.new(window)
+      map = Map.new(window)
       file.each do |klass, list|
-        Map.add_batch klass, list.map { |com| build_command(klass, com) }
+        map.entities << list.map { |com| build_command(klass, com) }
       end
+      map.entities.flatten!
+      map
     end
 
+    private
+
     def build_command(klass, command)
-      klass.constantize.new(formatter(command[:args]))
+      obj = "Environment::#{klass}".constantize
+      obj.new(window, formatter(command[:args]))
     end
 
     def formatter(args)
-      args[:w] = args[:w].constantize unless args[:w].is_a?(String)
-      args[:h] = args[:h].constantize unless args[:h].is_a?(String)
+      args[:x] = convert(args[:x])
+      args[:y] = convert(args[:x])
+      args[:w] = convert(args[:x])
+      args[:h] = convert(args[:x])
+      args
+    end
+
+    def convert(value)
+      case value
+      when String
+        "Maps::#{value}".constantize
+      when Fixnum
+        value * Maps::TILE_SIZE
+      end
     end
   end
 end

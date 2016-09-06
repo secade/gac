@@ -1,15 +1,9 @@
 module Environment
   class Map
-    ENGINE = Engines::Field
-
     attr_reader :window
 
     def initialize(window)
       @window = window
-    end
-
-    def add_batch(klass, list)
-      entities[klass] = list
     end
 
     def update
@@ -17,6 +11,7 @@ module Environment
     end
 
     def draw
+      binding.pry
       drawables.each(&:draw)
     end
 

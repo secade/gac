@@ -1,5 +1,5 @@
 ---
-:platform:
+:Platform:
 - &1
   :args:
     :x: 0
@@ -10,7 +10,7 @@
 - &1
   :args:
     :x: 0
-    :y: :max
+    :y: MAX_Y
     :h: 1
     :w: MAX_W
     :color: :blue
@@ -19,11 +19,11 @@
     :x: 0
     :y: 0
     :h: MAX_H
-    :w: :1
+    :w: 1
     :color: :blue
 - &1
   :args:
-    :x: 0
+    :x: MAX_X
     :y: 0
     :h: MAX_H
     :w: 1

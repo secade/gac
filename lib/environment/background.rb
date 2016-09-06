@@ -3,9 +3,12 @@ require_relative 'map_eater'
 
 module Environment
   class Background
+
+    ENGINE = Engines::Field
+
     delegate :draw, to: :map
 
-    attr_accessor :window, :all_entities, :player, :platforms
+    attr_accessor :window, :map, :player
 
     def initialize(window, player)
       @window = window

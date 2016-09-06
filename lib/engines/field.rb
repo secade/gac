@@ -16,7 +16,7 @@ module Engines
         map.gravitizables.each(&:gravitize)
       end
 
-      def run_collide(play, map)
+      def run_collide(player, map)
         collidables = map.collidables - [player]
 
         collidables.each do |c|
