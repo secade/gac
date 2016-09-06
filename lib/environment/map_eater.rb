@@ -1,5 +1,3 @@
 module Environment
-  module MapEater
-    Dir["#{__dir__}/#{File.basename(__FILE__, '.rb')}/*.rb"].each {|file| require file }
-  end
+  Dir["#{__dir__}/#{File.basename(__FILE__, '.rb')}/*.rb"].each {|file| require file }
 end

@@ -1,30 +1,30 @@
 ---
-:platforms:
+:platform:
 - &1
-  :type: :platform
-  :x: 0
-  :y: 0
-  :height: 1
-  :width: :max
-  :color: :green
+  :args:
+    :x: 0
+    :y: 0
+    :h: 1
+    :w: MAX_W
+    :color: :green
 - &1
-  :type: :platform
-  :x: 0
-  :y: :max
-  :height: 1
-  :width: :max
-  :color: :blue
+  :args:
+    :x: 0
+    :y: :max
+    :h: 1
+    :w: MAX_W
+    :color: :blue
 - &1
-  :type: :platform
-  :x: 0
-  :y: 0
-  :height: :max
-  :width: :1
-  :color: :blue
+  :args:
+    :x: 0
+    :y: 0
+    :h: MAX_H
+    :w: :1
+    :color: :blue
 - &1
-  :type: :platform
-  :x: 0
-  :y: 0
-  :height: :max
-  :width: 1
-  :color: :blue
+  :args:
+    :x: 0
+    :y: 0
+    :h: MAX_H
+    :w: 1
+    :color: :blue

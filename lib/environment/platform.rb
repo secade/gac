@@ -4,9 +4,9 @@ module Environment
 
     attr_accessor :window, :x, :y, :h, :w
 
-    def initialize(window, start_x, start_y, width, height, color = :blue)
+    def initialize(window, x: , y: , w: , height: , color: :blue)
       @window = window
-      @x, @y = start_x, start_y
+      @x, @y = x, y
       @h, @w = height, width
       @drawable = ::Draw::Rectangle.new(window, color, w, h)
     end
