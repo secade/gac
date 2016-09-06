@@ -1,0 +1,30 @@
+---
+:platforms:
+- &1
+  :type: :platform
+  :x: 0
+  :y: 0
+  :height: 1
+  :width: :max
+  :color: :green
+- &1
+  :type: :platform
+  :x: 0
+  :y: :max
+  :height: 1
+  :width: :max
+  :color: :blue
+- &1
+  :type: :platform
+  :x: 0
+  :y: 0
+  :height: :max
+  :width: :1
+  :color: :blue
+- &1
+  :type: :platform
+  :x: 0
+  :y: 0
+  :height: :max
+  :width: 1
+  :color: :blue
