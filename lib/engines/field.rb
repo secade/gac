@@ -1,22 +1,20 @@
-# Placeholder for collision detection on the field
+# Placeholder for collision detection on the map
 #
 # THIS IS CURRENTLY SUPER STUPID
 
 module Engines
   module Field
     class << self
-      def update(field)
-        run_gravity(field)
-        run_collide(field)
+      def update(player, map)
+        map.updateables.each(&:update)
+        map.gravitizables.each(&:gravitize)
+        run_collide(player, map)
       end
 
-      def run_gravity(field)
-        field.gravitizables.each(&:gravitize)
-      end
+      private
 
-      def run_collide(field)
-        player = field.player
-        collidables = field.collidables - [player]
+      def run_collide(player, map)
+        collidables = map.collidables - [player]
 
         collidables.each do |c|
           if collision = player.check_collision(c)

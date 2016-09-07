@@ -23,11 +23,11 @@ class Window < Gosu::Window
   end
 
   def update
-    [@player, @map,@controller].each(&:update)
+    [@map, @controller].each(&:update)
   end
 
   def draw
-    [@map, @player].each(&:draw)
+    [@map].each(&:draw)
   end
 
   def window_action(action)

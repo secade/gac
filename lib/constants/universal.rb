@@ -6,8 +6,8 @@ module UNIVERSAL
   WIDTH = 640
   HEIGHT = 480
 
-  TILE_W = 32
-  TILE_H = 32
+  WIDTH_TILES = 20
+  HEIGHT_TILES = 15
 
-  BASIC_VEL = 4
+  TILE_SIZE = 32
 end
