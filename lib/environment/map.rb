@@ -11,7 +11,6 @@ module Environment
     end
 
     def draw
-      binding.pry
       drawables.each(&:draw)
     end
 

@@ -6,8 +6,4 @@ module Maps
 
   TILE_SIZE = ::UNIVERSAL::TILE_SIZE
 
-  MAX_W = ::UNIVERSAL::WIDTH_TILES
-  MAX_H = ::UNIVERSAL::HEIGHT_TILES
-  MAX_X = MAX_W - 1
-  MAX_Y = MAX_H - 1
 end

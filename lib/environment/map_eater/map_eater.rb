@@ -36,19 +36,14 @@ module Environment
 
     def formatter(args)
       args[:x] = convert(args[:x])
-      args[:y] = convert(args[:x])
-      args[:w] = convert(args[:x])
-      args[:h] = convert(args[:x])
+      args[:y] = convert(args[:y])
+      args[:w] = convert(args[:w])
+      args[:h] = convert(args[:h])
       args
     end
 
     def convert(value)
-      case value
-      when String
-        "Maps::#{value}".constantize
-      when Fixnum
-        value * Maps::TILE_SIZE
-      end
+      value * Maps::TILE_SIZE
     end
   end
 end

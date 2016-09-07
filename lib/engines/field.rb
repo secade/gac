@@ -6,15 +6,12 @@ module Engines
   module Field
     class << self
       def update(player, map)
-        run_gravity(map)
+        map.updateables.each(&:update)
+        map.gravitizables.each(&:gravitize)
         run_collide(player, map)
       end
 
       private
-
-      def run_gravity(map)
-        map.gravitizables.each(&:gravitize)
-      end
 
       def run_collide(player, map)
         collidables = map.collidables - [player]

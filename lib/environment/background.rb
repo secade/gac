@@ -14,6 +14,7 @@ module Environment
       @window = window
       @player = player
       @map = MapEater.eat!(window: window, path: 'assets/maps/base.yaml')
+      map.entities << player
     end
 
     def update

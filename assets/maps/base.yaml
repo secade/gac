@@ -5,26 +5,47 @@
     :x: 0
     :y: 0
     :h: 1
-    :w: MAX_W
+    :w: 20
     :color: :green
 - &1
   :args:
     :x: 0
-    :y: MAX_Y
-    :h: 1
-    :w: MAX_W
+    :y: 14
+    :h: 2
+    :w: 20
     :color: :blue
 - &1
   :args:
     :x: 0
     :y: 0
-    :h: MAX_H
+    :h: 15
     :w: 1
     :color: :blue
 - &1
   :args:
-    :x: MAX_X
+    :x: 19
     :y: 0
-    :h: MAX_H
+    :h: 15
     :w: 1
+    :color: :blue
+- &1
+  :args:
+    :x: 7
+    :y: 11
+    :h: 1
+    :w: 10
+    :color: :blue
+- &1
+  :args:
+    :x: 9
+    :y: 8
+    :h: 1
+    :w: 4
+    :color: :blue
+- &1
+  :args:
+    :x: 11
+    :y: 5
+    :h: 1
+    :w: 4
     :color: :blue
