@@ -6,37 +6,55 @@ module Player
     HOR_OFFSET = 2.0
     IMPULSE = 2.5
     MAX_VEL = 5.0
-    MIN_VEL = 1.50
+    MIN_VEL = 0.4
     DRAG = 0.85
 
     def update_movement
-      @prev_x, @prev_y = x, y
+      calc_position
+      @prev_pos, @prev_x, @prev_y = pos, x, y
       @x += vel_x
       @y += vel_y
       kill_jump_flag if ver_still?
-      @vel_x *= DRAG
+      if vel_x.abs < MIN_VEL
+        @vel_x = 0
+      else
+        @vel_x *= DRAG
+      end
       @vel_y *= DRAG
     end
 
+    def calc_position
+      if prev_y.try(:round,3) != y.round(3)
+        @pos = [:rs, :rw, :rj].include?(prev_pos) ? :rj : :lj
+        # @pos = vel_x < 0 ? :lj : :rj
+      elsif prev_x.round(3) == x.round(3)
+        if prev_pos == :rw || prev_pos == :rj
+          @pos = :rs
+        elsif prev_pos == :lw || prev_pos == :lj
+          @pos = :ls
+        end
+      else
+        @pos = prev_x.try(:round,3) > x.round(3) ? :lw : :rw
+      end
+      puts "DRAW #{pos} at #{vel_x}: #{prev_x}: #{x}, #{vel_y}: #{prev_y}: #{y}"
+    end
+
     def _jump
-      @drawable = @up_rec
       @vel_y = -MAX_VEL * 6.0
     end
 
     def ver_still?
-      vel_y == 0 && @prev_y == @y
+      vel_y == 0 && prev_y == @y
     end
 
     def input_move_down
     end
 
     def input_move_right
-      @drawable = @right_rec
       vel_x <= MAX_VEL ? @vel_x += IMPULSE : @vel_x = MAX_VEL
     end
 
     def input_move_left
-      @drawable = @left_rec
       vel_x >= -MAX_VEL ? @vel_x -= IMPULSE : @vel_x = -MAX_VEL
     end
 

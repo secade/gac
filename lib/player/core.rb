@@ -17,20 +17,23 @@ module Player
 
     action_flag :jump
 
-    attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h
-
-    delegate :draw, to: :drawable
+    attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h, :pos, :prev_x, :prev_y, :prev_pos
 
     def initialize(window, start_x, start_y)
       @window = window
       @x, @y = start_x, start_y
       @w, @h = WIDTH, HEIGHT
       @vel_x, @vel_y = 0, 0
+      @pos = :rs
       @drawable = Draw::Entity.new(window, w, h)
     end
 
     def update
       update_movement
+    end
+
+    def draw
+      @drawable.draw(x, y, pos)
     end
 
     def player_action(action)

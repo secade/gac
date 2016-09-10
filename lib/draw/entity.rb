@@ -10,14 +10,7 @@
 module Draw
   class Entity < Base
 
-    attr_reader :window, :w, :h
-
-    delegate :draw_ls, to: :ls
-    delegate :draw_rs, to: :rs
-    delegate :draw_lw, to: :lw
-    delegate :draw_rw, to: :rw
-    delegate :draw_lj, to: :lj
-    delegate :draw_rj, to: :rj
+    attr_reader :window, :w, :h, :ls, :rs, :lw, :rw, :lj, :rj
 
     def initialize(window, width, height)
       @window = window
@@ -26,24 +19,18 @@ module Draw
     end
 
     def draw(x, y, pos = :rs)
-      send "draw_#{pos}"
+      send(pos).draw(x, y)
     end
 
     private
 
     def prepare_sprites
-      @ls = ::Draw::Rectangle.new(window, :orange, WIDTH, HEIGHT)
-      @rs = ::Draw::Rectangle.new(window, :purple, WIDTH, HEIGHT)
-      @lw = ::Draw::Rectangle.new(window, :red, WIDTH, HEIGHT)
-      @rw = ::Draw::Rectangle.new(window, :green, WIDTH, HEIGHT)
-      @lj = ::Draw::Rectangle.new(window, :gold, WIDTH, HEIGHT)
-      @rj = ::Draw::Rectangle.new(window, :blue, WIDTH, HEIGHT)
-    end
-
-    def draw_ls
-    end
-
-    def draw_rs
+      @ls = ::Draw::Rectangle.new(window, :orange, w, h)
+      @rs = ::Draw::Rectangle.new(window, :purple, w, h)
+      @lw = ::Draw::Rectangle.new(window, :red, w, h)
+      @rw = ::Draw::Rectangle.new(window, :green, w, h)
+      @lj = ::Draw::Rectangle.new(window, :gold, w, h)
+      @rj = ::Draw::Rectangle.new(window, :blue, w, h)
     end
   end
 end
