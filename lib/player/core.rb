@@ -19,24 +19,18 @@ module Player
 
     attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h
 
+    delegate :draw, to: :drawable
+
     def initialize(window, start_x, start_y)
       @window = window
       @x, @y = start_x, start_y
       @w, @h = WIDTH, HEIGHT
       @vel_x, @vel_y = 0, 0
-      @left_rec = ::Draw::Rectangle.new(window, :red, WIDTH, HEIGHT)
-      @right_rec = ::Draw::Rectangle.new(window, :green, WIDTH, HEIGHT)
-      @up_rec = ::Draw::Rectangle.new(window, :orange, WIDTH, HEIGHT)
-      @down_rec = ::Draw::Rectangle.new(window, :purple, WIDTH, HEIGHT)
-      @drawable = @right_rec
+      @drawable = Draw::Entity.new(window, w, h)
     end
 
     def update
       update_movement
-    end
-
-    def draw
-      @drawable.draw(x, y)
     end
 
     def player_action(action)
