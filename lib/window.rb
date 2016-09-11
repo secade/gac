@@ -12,6 +12,7 @@ class Window < Gosu::Window
 
   delegate :player_action, to: :player
   delegate :window_action, to: self
+  delegate :get_asset,     to: :pipeline
 
   def initialize(pipeline)
     super ::UNIVERSAL::WIDTH, ::UNIVERSAL::HEIGHT

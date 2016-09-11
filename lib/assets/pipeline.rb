@@ -14,10 +14,14 @@ module Assets
       self.new.load!
     end
 
-    attr_reader :songs
+    attr_reader :song
 
     def initialize
-      @songs = {}
+      @song = {}
+    end
+
+    def get_asset(type:, name:)
+      send(type)[name]
     end
 
     def load!
@@ -27,7 +31,7 @@ module Assets
 
     def load_asset!
       lambda do |f|
-        @songs[name_only(f)] = Gosu::Song.new(f)
+        @song[name_only(f)] = Gosu::Song.new(f)
       end
     end
 

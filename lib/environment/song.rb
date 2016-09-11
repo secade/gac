@@ -11,7 +11,7 @@ module Environment
 
     def initialize(window, filename: )
       @filename = filename
-      @song = window.pipeline.songs[filename]
+      @song = window.get_asset(type: :song, name: filename)
       song.play(true)
     end
 
