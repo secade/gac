@@ -8,15 +8,17 @@ require_relative 'draw'
 require_relative 'player'
 
 class Window < Gosu::Window
-  attr_reader :player
+  attr_reader :player, :pipeline
 
   delegate :player_action, to: :player
   delegate :window_action, to: self
+  delegate :get_asset,     to: :pipeline
 
-  def initialize
+  def initialize(pipeline)
     super ::UNIVERSAL::WIDTH, ::UNIVERSAL::HEIGHT
     caption = "Generic Ancient Civilization"
 
+    @pipeline = pipeline
     @player = Player::Core.new(self, 320, 240)
     @map = Environment::Background.new(self, player)
     @controller = Controllers::Base.new(self)

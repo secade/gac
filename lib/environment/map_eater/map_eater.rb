@@ -31,19 +31,7 @@ module Environment
 
     def build_command(klass, command)
       obj = "Environment::#{klass}".constantize
-      obj.new(window, formatter(command[:args]))
-    end
-
-    def formatter(args)
-      args[:x] = convert(args[:x])
-      args[:y] = convert(args[:y])
-      args[:w] = convert(args[:w])
-      args[:h] = convert(args[:h])
-      args
-    end
-
-    def convert(value)
-      value * Maps::TILE_SIZE
+      obj.factory(window, command[:args])
     end
   end
 end

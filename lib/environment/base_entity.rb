@@ -1,5 +1,9 @@
 module Environment
   module BaseEntity
+    def factory(window, args)
+      new(window, args)
+    end
+
     def attr_entity(input_attrs)
       attrs = {
         updateable:   false,
