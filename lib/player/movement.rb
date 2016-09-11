@@ -14,7 +14,7 @@ module Player
       @prev_pos, @prev_x, @prev_y = pos, x, y
       @x += vel_x
       @y += vel_y
-      kill_jump_flag if ver_still?
+      kill_jump_flag if kill_jump_flag?
       if vel_x.abs < MIN_VEL
         @vel_x = 0
       else
@@ -43,8 +43,12 @@ module Player
       @vel_y = -MAX_VEL * 6.0
     end
 
-    def ver_still?
-      vel_y == 0 && prev_y == @y
+    def kill_jump_flag?
+      vel_y == 0 && @prev_y == @y && !top_collide?
+    end
+
+    def top_collide?
+
     end
 
     def input_move_down
@@ -63,16 +67,19 @@ module Player
     end
 
     def stop_from_right(offset)
+      puts "right: #{offset}"
       @x += offset
       @vel_x = 0
     end
 
     def stop_from_left(offset)
+      puts "left: #{offset}"
       @x -= offset
       @vel_x = 0
     end
 
     def stop_from_top(offset)
+      puts "TOP: #{offset}"
       @y += offset
       @vel_y = 0
     end
