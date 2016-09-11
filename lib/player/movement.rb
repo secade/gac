@@ -26,7 +26,6 @@ module Player
     def calc_position
       if prev_y.try(:round,3) != y.round(3)
         @pos = [:rs, :rw, :rj].include?(prev_pos) ? :rj : :lj
-        # @pos = vel_x < 0 ? :lj : :rj
       elsif prev_x.round(3) == x.round(3)
         if prev_pos == :rw || prev_pos == :rj
           @pos = :rs
@@ -36,7 +35,7 @@ module Player
       else
         @pos = prev_x.try(:round,3) > x.round(3) ? :lw : :rw
       end
-      puts "DRAW #{pos} at #{vel_x}: #{prev_x}: #{x}, #{vel_y}: #{prev_y}: #{y}"
+      # puts "DRAW #{pos} at #{vel_x}: #{prev_x}: #{x}, #{vel_y}: #{prev_y}: #{y}"
     end
 
     def _jump
@@ -44,11 +43,7 @@ module Player
     end
 
     def kill_jump_flag?
-      vel_y == 0 && @prev_y == @y && !top_collide?
-    end
-
-    def top_collide?
-
+      vel_y == 0 && @prev_y == @y && @prev_col != :top
     end
 
     def input_move_down
@@ -68,23 +63,27 @@ module Player
 
     def stop_from_right(offset)
       puts "right: #{offset}"
+      @prev_col = :right
       @x += offset
       @vel_x = 0
     end
 
     def stop_from_left(offset)
       puts "left: #{offset}"
+      @prev_col = :left
       @x -= offset
       @vel_x = 0
     end
 
     def stop_from_top(offset)
       puts "TOP: #{offset}"
+      @prev_col = :top
       @y += offset
       @vel_y = 0
     end
 
     def stop_from_bottom(offset)
+      @prev_col = :bottom
       @y -= offset
       @vel_y = 0
     end
