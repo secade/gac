@@ -9,8 +9,8 @@ module Environment
 
     def initialize(window, x: , y: , w: , h: , color: :blue)
       @window = window
-      @x, @y, @w, @h = x, y, w, h
-      @drawable = ::Draw::Rectangle.new(window, color, w, h)
+      @x, @y, @w, @h = [x, y, w, h].map {|val| val * Maps::TILE_SIZE }
+      @drawable = ::Draw::Rectangle.new(window, color, @w, @h)
     end
 
     def draw
