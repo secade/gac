@@ -4,6 +4,8 @@ module Environment
 
     def initialize(window)
       @window = window
+      @song = window.pipeline.songs["test8bit3.wav"]
+      @song.play(true)
     end
 
     def update
