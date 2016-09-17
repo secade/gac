@@ -1,4 +1,5 @@
-# Small DSL for creating a timer
+require_relative 'timer'
+
 # Extend the class in order to add instance method helpers
 # for easily spinning up timers that you can time to actions
 
@@ -12,7 +13,9 @@ module Utils
         def #{method}
           unless #{method}_time_left?
             _#{method}
-            _timers << Utils::Timer.new(type: :#{method}, ticks: #{opts[:length]})
+            randomization = #{opts.fetch(:randomization, 0)}
+            ticks = #{opts[:length]} + rand(randomization) - randomization / 2
+            _timers << Utils::Timer.new(type: :#{method}, ticks: ticks)
           end
         end
 

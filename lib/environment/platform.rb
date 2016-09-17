@@ -1,6 +1,6 @@
 module Environment
   class Platform
-    extend BaseEntity
+    extend BaseObject
     include Engines::Collidable
 
     attr_entity [:drawable, :collidable]

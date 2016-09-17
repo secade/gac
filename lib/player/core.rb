@@ -1,28 +1,12 @@
-require_relative 'movement'
-require_relative 'position_calculator'
+require_relative '../entities/movement'
 require_relative '../engines/collidable'
 
 module Player
-  WIDTH = 32
-  HEIGHT = 62
-
-  class Core
-    extend Environment::BaseEntity
-    include Movement
-    include Engines::Collidable
-    include Engines::Gravity
-    extend Utils::ActionHelpers
-
-    attr_entity [:updateable, :drawable, :gravitizable]
-
-    action_flag :jump
-
-    attr_accessor :window, :x, :y, :vel_x, :vel_y, :w, :h, :pos, :prev_x, :prev_y, :prev_pos
-
+  class Core < Entities::Base
     def initialize(window, start_x, start_y)
       @window = window
       @x, @y = start_x, start_y
-      @w, @h = WIDTH, HEIGHT
+      @w, @h = 32, 64
       @vel_x, @vel_y = 0, 0
       @pos = :rs
       @drawable = Draw::Entity.new(window, w, h)
@@ -38,10 +22,6 @@ module Player
 
     def player_action(action)
       send action
-    end
-
-    def collide!(collision)
-      send collision.action, collision
     end
   end
 end

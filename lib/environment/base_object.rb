@@ -1,5 +1,5 @@
 module Environment
-  module BaseEntity
+  module BaseObject
     def factory(window, args)
       new(window, args)
     end
@@ -10,6 +10,7 @@ module Environment
         drawable:     false,
         gravitizable: false,
         collidable:   false,
+        collidee:     false,
       }
 
       input_attrs.each do |attr|

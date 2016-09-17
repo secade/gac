@@ -30,7 +30,7 @@ module Environment
     private
 
     def build_command(klass, command)
-      obj = "Environment::#{klass}".constantize
+      obj = klass.to_s.constantize
       obj.factory(window, command[:args])
     end
   end

@@ -5,6 +5,7 @@ require_relative 'constants'
 require_relative 'controllers'
 require_relative 'environment'
 require_relative 'draw'
+require_relative 'entities'
 require_relative 'player'
 
 class Window < Gosu::Window

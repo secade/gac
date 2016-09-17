@@ -1,6 +1,6 @@
 # Series of actions callable from controller or interactive objects/entities
 
-module Player
+module Entities
   module Movement
 
     HOR_OFFSET = 2.0
@@ -62,21 +62,21 @@ module Player
     end
 
     def stop_from_right(offset)
-      puts "right: #{offset}"
+      # puts "right: #{offset}"
       @prev_col = :right
       @x += offset
       @vel_x = 0
     end
 
     def stop_from_left(offset)
-      puts "left: #{offset}"
+      # puts "left: #{offset}"
       @prev_col = :left
       @x -= offset
       @vel_x = 0
     end
 
     def stop_from_top(offset)
-      puts "TOP: #{offset}"
+      # puts "TOP: #{offset}"
       @prev_col = :top
       @y += offset
       @vel_y = 0

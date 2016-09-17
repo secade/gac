@@ -16,10 +16,12 @@ module Engines
       def run_collide(player, map)
         collidables = map.collidables - [player]
 
-        collidables.each do |c|
-          if collision = player.check_collision(c)
-            collision.action = c.collided_action
-            player.collide!(collision)
+        map.collidees.each do |collidee|
+          collidables.each do |c|
+            if collision = collidee.check_collision(c)
+              collision.action = c.collided_action
+              collidee.collide!(collision)
+            end
           end
         end
       end
