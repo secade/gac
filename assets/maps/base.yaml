@@ -50,3 +50,14 @@
 - :args:
     :start_x: 10
     :start_y: 2
+    :actions: ['move', 'jump']
+- :args:
+    :start_x: 9
+    :start_y: 2
+    :actions: ['move', 'jump']
+- :args:
+    :start_x: 8
+    :start_y: 2
+- :args:
+    :start_x: 7
+    :start_y: 2
