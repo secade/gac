@@ -1,4 +1,4 @@
-module Utiles
+module Utils
   class Timer
     attr_reader :ticks, :type
 

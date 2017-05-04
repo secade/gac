@@ -26,6 +26,10 @@ module Environment
       entities.select(&:updateable?)
     end
 
+    def collidees
+      entities.select(&:collidee?)
+    end
+
     def collidables
       entities.select(&:collidable?)
     end

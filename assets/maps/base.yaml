@@ -1,9 +1,9 @@
 ---
-:MapMeta:
+:Environment::MapMeta:
 - :args:
     :Song:
       :filename: test8bit3.wav
-:Platform:
+:Environment::Platform:
 - :args:
     :x: 0
     :y: 0
@@ -46,3 +46,18 @@
     :h: 1
     :w: 4
     :color: :blue
+:Entities::Townsfolk:
+- :args:
+    :start_x: 10
+    :start_y: 2
+    :actions: ['move', 'jump']
+- :args:
+    :start_x: 9
+    :start_y: 2
+    :actions: ['move', 'jump']
+- :args:
+    :start_x: 8
+    :start_y: 2
+- :args:
+    :start_x: 7
+    :start_y: 2

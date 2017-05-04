@@ -3,7 +3,7 @@
 
 module Environment
   class Song
-    extend BaseEntity
+    extend BaseObject
 
     attr_entity [:updateable]
 
